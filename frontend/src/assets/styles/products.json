@@ -1,0 +1,123 @@
+[
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81201" },
+      "productName": "Wireless Bluetooth Headphones",
+      "productDesc": "Noise-cancelling over-ear Bluetooth headphones with deep bass.",
+      "productPrice": 59.99,
+      "productImage": "https://images.unsplash.com/photo-1512314889357-e157c22f938d",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81202" },
+      "productName": "Smartphone 128GB",
+      "productDesc": "Latest 5G smartphone with an AMOLED display and powerful camera.",
+      "productPrice": 699.99,
+      "productImage": "https://images.unsplash.com/photo-1556656793-08538906a9f8",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81203" },
+      "productName": "Gaming Laptop",
+      "productDesc": "High-performance gaming laptop with RTX 3070 and 16GB RAM.",
+      "productPrice": 1299.99,
+      "productImage": "https://images.unsplash.com/photo-1589571894960-20bbe2828d0a",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81204" },
+      "productName": "Mechanical Keyboard",
+      "productDesc": "RGB backlit mechanical keyboard with customizable keys.",
+      "productPrice": 89.99,
+      "productImage": "https://images.unsplash.com/photo-1604866839861-03778c9049a2",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81205" },
+      "productName": "Smart Watch",
+      "productDesc": "Feature-packed smartwatch with heart rate monitoring.",
+      "productPrice": 199.99,
+      "productImage": "https://images.unsplash.com/photo-1523474253046-8cd2749b48d6",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81206" },
+      "productName": "Wireless Earbuds",
+      "productDesc": "Compact wireless earbuds with active noise cancellation.",
+      "productPrice": 49.99,
+      "productImage": "https://images.unsplash.com/photo-1585386959984-a4155224a894",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81207" },
+      "productName": "4K Smart TV",
+      "productDesc": "Ultra HD 4K Smart TV with HDR and built-in streaming apps.",
+      "productPrice": 999.99,
+      "productImage": "https://images.unsplash.com/photo-1588479658335-cc0fea0cddf9",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81208" },
+      "productName": "Gaming Mouse",
+      "productDesc": "Ergonomic gaming mouse with customizable DPI settings.",
+      "productPrice": 39.99,
+      "productImage": "https://images.unsplash.com/photo-1570913149827-d2ac84ab3c9d",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81209" },
+      "productName": "External Hard Drive 1TB",
+      "productDesc": "Portable external hard drive with fast USB 3.0 transfer speeds.",
+      "productPrice": 79.99,
+      "productImage": "https://images.unsplash.com/photo-1611152202424-3cb5c6e4c7c4",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81210" },
+      "productName": "DSLR Camera",
+      "productDesc": "Professional DSLR camera with a 24MP sensor and 4K video recording.",
+      "productPrice": 1199.99,
+      "productImage": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81211" },
+      "productName": "Fitness Tracker",
+      "productDesc": "Fitness tracker with step counting, sleep monitoring, and heart rate tracking.",
+      "productPrice": 99.99,
+      "productImage": "https://images.unsplash.com/photo-1594633312333-ec911663d638",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81212" },
+      "productName": "Portable Bluetooth Speaker",
+      "productDesc": "Water-resistant portable speaker with deep bass and long battery life.",
+      "productPrice": 59.99,
+      "productImage": "https://images.unsplash.com/photo-1533222481259-a27c7e95c87d",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81213" },
+      "productName": "VR Headset",
+      "productDesc": "Immersive virtual reality headset with motion tracking.",
+      "productPrice": 299.99,
+      "productImage": "https://images.unsplash.com/photo-1574176984123-6fc18ad123b9",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81214" },
+      "productName": "USB-C Docking Station",
+      "productDesc": "Docking station with multiple USB ports, HDMI, and Ethernet.",
+      "productPrice": 89.99,
+      "productImage": "https://images.unsplash.com/photo-1525182008055-f88b95ff7980",
+      "__v": 0
+    },
+    {
+      "_id": { "$oid": "67c412edc121d60a89d81215" },
+      "productName": "Wireless Charger",
+      "productDesc": "Fast wireless charging pad compatible with all Qi-enabled devices.",
+      "productPrice": 29.99,
+      "productImage": "https://images.unsplash.com/photo-1557838923-2985c318be48",
+      "__v": 0
+    }
+  ]
+  
