@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-
+const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
 const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   const handleOrders = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/cart', {
+      const response = await fetch(`${REACT_BASE_URL}/api/cart`, {
         method: 'GET',
       });
       const data = await response.json();

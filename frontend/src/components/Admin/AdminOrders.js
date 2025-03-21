@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Table, Container, Alert, Spinner, Badge, Form } from "react-bootstrap";
-
+const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     fetchOrders();
   }, []);
-
   const fetchOrders = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/allOrders");
+      const response = await fetch(`${REACT_BASE_URL}/api/allOrders`);
       if (!response.ok) {
         throw new Error("Failed to fetch orders");
       }
@@ -24,7 +22,6 @@ const AdminOrders = () => {
       setLoading(false);
     }
   };
-
   const getStatusVariant = (status) => {
     switch (status) {
       case "Pending":
@@ -41,10 +38,9 @@ const AdminOrders = () => {
         return "secondary";
     }
   };
-
   const handleStatusChange = async (orderId, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/update_status/${orderId}`, {
+      const response = await fetch(`${REACT_BASE_URL}/api/update_status/${orderId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

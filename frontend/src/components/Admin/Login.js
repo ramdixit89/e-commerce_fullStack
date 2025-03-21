@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
 const Login = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -10,7 +10,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/admin/login_admin", {
+      const response = await fetch(`${REACT_BASE_URL}/admin/login_admin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

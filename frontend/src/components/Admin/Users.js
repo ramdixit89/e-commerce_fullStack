@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
 const Users = () => {
   const [users, setUsers] = useState([]);
 
   const handleUser = async () => {
     try {
-      const response = await fetch('http://localhost:8000/admin/users', {
+      const response = await fetch(`${REACT_BASE_URL}/admin/users`, {
         method: 'GET',
       });
       const data = await response.json();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
 const Update = () => {
   const { id } = useParams(); // Get product ID from URL
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Update = () => {
 
   const fetchProductDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/api/products/${id}`);
+      const response = await fetch(`${REACT_BASE_URL}/api/products/${id}`);
       const data = await response.json();
       
       if (data) { // Ensure data exists before updating state
@@ -52,7 +52,7 @@ const Update = () => {
       if (product.productImage instanceof File) {
         formData.append("productImage", product.productImage); // Only append new file
       }
-      await fetch(`http://localhost:8000/api/update/${id}`, {
+      await fetch(`${REACT_BASE_URL}/api/update/${id}`, {
         method: "PUT",
         body: formData,
       });
@@ -102,7 +102,7 @@ const Update = () => {
           {product.productImage && !(product.productImage instanceof File) && (
             <div className="mb-2">
               <img
-                src={`http://localhost:8000/uploads/${product.productImage}`}
+                src={`${REACT_BASE_URL}/uploads/${product.productImage}`}
                 alt="Product"
                 className="img-fluid rounded"
                 style={{ maxWidth: "200px", maxHeight: "200px" }}

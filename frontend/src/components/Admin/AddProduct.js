@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
 const AddProduct = () => {
   const [image, setImage] = useState(null);
   const [formData, setFormData] = useState({
@@ -31,7 +31,7 @@ const AddProduct = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/api/addProduct', {
+      const response = await fetch(`${REACT_BASE_URL}/api/addProduct`, {
         method: 'POST',
         body: submitData,
       });

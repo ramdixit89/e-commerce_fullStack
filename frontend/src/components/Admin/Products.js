@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [update, setUpdates] = useState('');
@@ -9,7 +10,7 @@ const Products = () => {
   const navigate = useNavigate();
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/products'); 
+      const response = await fetch(`${REACT_BASE_URL}/api/products`); 
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -18,7 +19,7 @@ const Products = () => {
   };
   const handleDelete = async (product_Id) => {
     try {
-      await fetch(`http://localhost:8000/api/delete/${product_Id}`, { method: 'DELETE' }); 
+      await fetch(`${REACT_BASE_URL}/api/delete/${product_Id}`, { method: 'DELETE' }); 
       setProducts(products.filter(product => product.product_Id !== product_Id));
       fetchProducts();
     } catch (error) {
