@@ -5,6 +5,7 @@ const router = require('./routes/productRoutes');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const cors = require('cors'); 
+const path = require('path');
 const authrouter = require('./routes/authRoutes');
 const admin = require('./routes/adminRoutes');
 const app = express();
@@ -17,7 +18,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 // Middleware for handling file uploads
 app.use(fileUpload());
-app.use('/uploads', express.static('uploads/images'));
+// app.use('/uploads', express.static('uploads/images'));
+// Serve static files from 'uploads' directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //DB connection
 db();

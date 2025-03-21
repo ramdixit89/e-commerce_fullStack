@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const IMAGE_URL = process.env.REACT_APP_IMAGE_URL;
-
 const Cart = () => {
     const [cart, setCart] = useState([]);
     const navigate = useNavigate();
     const userId = localStorage.getItem('userId');
-
     useEffect(() => {
         if (userId) {
             cartItems();
         }
     }, [userId]);
-
     const headers = {
         'Content-Type': 'application/json',
     };
@@ -72,7 +68,7 @@ const Cart = () => {
                                             width={80}
                                             height={80}
                                             className="rounded border"
-                                            src={`${IMAGE_URL}${item.product_Id.productImage}`}
+                                            src={`${IMAGE_URL}/${item.product_Id.productImage}`}
                                             alt="Product"
                                         />
                                     </td>
