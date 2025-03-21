@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const REACT_BASE_URL = 'http://localhost:8000';
+const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${REACT_BASE_URL}/auth/login`, {
+      const response = await fetch(`${REACT_BASE_URL}auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

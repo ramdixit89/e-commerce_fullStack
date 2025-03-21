@@ -26,7 +26,7 @@ const OrderForm = () => {
 
   const fetchProduct = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/products/${id}`);
+      const response = await fetch(`${BASE_URL}/api/products/${id}`);
       const data = await response.json();
       if (response.ok) {
         setProduct(data.product);
@@ -55,7 +55,7 @@ const OrderForm = () => {
     if (!userId) return toast.error("User ID not found. Please log in.");
 
     try {
-      const response = await fetch(`${BASE_URL}/order/${userId}`, {
+      const response = await fetch(`${BASE_URL}/api/order/${userId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

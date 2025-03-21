@@ -20,13 +20,13 @@ const Cart = () => {
     };
 
     const cartItems = async () => {
-        const response = await fetch(`${BASE_URL}/get_cart/${userId}`, { method: 'GET', headers });
+        const response = await fetch(`${BASE_URL}/api/get_cart/${userId}`, { method: 'GET', headers });
         const data = await response.json();
         setCart(data);
     };
 
     const incrementQuant = async (product_Id) => {
-        await fetch(`${BASE_URL}/add_cart/${product_Id}`, {
+        await fetch(`${BASE_URL}/api/add_cart/${product_Id}`, {
             method: 'POST',
             headers,
             body: JSON.stringify({ user_Id: userId }),
@@ -35,12 +35,12 @@ const Cart = () => {
     };
 
     const removeCart = async (product_Id) => {
-        await fetch(`${BASE_URL}/remove/${product_Id}`, { method: 'DELETE', headers });
+        await fetch(`${BASE_URL}/api/remove/${product_Id}`, { method: 'DELETE', headers });
         cartItems();
     };
 
     const decreaseCart = async (product_Id) => {
-        await fetch(`${BASE_URL}/decreQuant/${product_Id}`, { method: 'POST', headers });
+        await fetch(`${BASE_URL}/api/decreQuant/${product_Id}`, { method: 'POST', headers });
         cartItems();
     };
 

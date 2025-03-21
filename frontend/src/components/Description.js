@@ -13,14 +13,14 @@ const Description = () => {
     }, [id]);
 
     const handleDescription = async () => {
-        const response = await fetch(`${BASE_URL}/products/${id}`);
+        const response = await fetch(`${BASE_URL}/api/products/${id}`);
         const data = await response.json();
         setProduct(data.product);
     };
 
     const addToCart = async () => {
         const userId = localStorage.getItem('userId');
-        await fetch(`${BASE_URL}/add_cart/${id}`, {
+        await fetch(`${BASE_URL}/api/add_cart/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

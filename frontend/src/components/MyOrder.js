@@ -18,7 +18,7 @@ const MyOrder = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/orderById/${userId}`);
+      const response = await fetch(`${BASE_URL}/api/orderById/${userId}`);
       const data = await response.json();
       
       if (response.ok && data.status === "Success") {
@@ -37,7 +37,7 @@ const MyOrder = () => {
 
   const cancelOrder = async (orderId) => {
     try {
-      const response = await fetch(`${BASE_URL}/cancelOrder/${orderId}`, {
+      const response = await fetch(`${BASE_URL}/api/cancelOrder/${orderId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
