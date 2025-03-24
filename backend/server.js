@@ -17,7 +17,11 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 // Middleware for handling file uploads
-app.use(fileUpload());
+// app.use(fileUpload());
+app.use(fileUpload({
+     useTempFiles: true, // ✅ Enable temporary file storage
+     tempFileDir: "/tmp/", // ✅ Define a temp directory
+ }));
 // app.use('/uploads', express.static('uploads/images'));
 // Serve static files from 'uploads' directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

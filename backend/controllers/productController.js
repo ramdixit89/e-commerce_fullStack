@@ -36,8 +36,10 @@ const cloudinary = require('../config/cloudinaryConfig');
 // Create Product
 const createProduct = async (req, res) => {
     try {
+        console.log("Received files:", req.files); // Debugging log
         const { productName, productDesc, productPrice } = req.body;
         const image = req.files?.productImage; // Assuming you're using express-fileupload
+       
 
         if (!productName || !productDesc || !productPrice) {
             return res.status(400).json({ message: "All fields are required" });
