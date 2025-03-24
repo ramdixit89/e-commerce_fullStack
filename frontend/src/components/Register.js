@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const REACT_BASE_URL =  `${process.env.REACT_APP_BASE_URL}`;
+const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
 const Register = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
