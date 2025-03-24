@@ -87,7 +87,7 @@ const OrderForm = () => {
             <img
               width={250}
               className="img-fluid rounded mx-auto"
-              src={`${IMAGE_URL}/${product.productImage}`}
+              src={`${product.productImage}`}
               alt="Product"
             />
             <h4 className="fw-bold mt-3">{product.productName}</h4>

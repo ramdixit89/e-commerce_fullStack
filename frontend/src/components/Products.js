@@ -68,7 +68,7 @@ const Products = () => {
             <div className='col-lg-3 col-md-4 col-sm-6 mb-4' key={product._id}>
               <div className='card shadow-sm border-0 rounded h-100'>
                 <img 
-                  src={`${IMAGE_URL}/${product.productImage}`} 
+                  src={`${product.productImage}`} 
                   alt={product.productName} 
                   className='card-img-top img-fluid p-2' 
                   style={{ objectFit: 'cover', height: '160px' }}

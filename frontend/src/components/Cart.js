@@ -68,7 +68,7 @@ const Cart = () => {
                                             width={80}
                                             height={80}
                                             className="rounded border"
-                                            src={`${IMAGE_URL}/${item.product_Id.productImage}`}
+                                            src={`${item.product_Id.productImage}`}
                                             alt="Product"
                                         />
                                     </td>

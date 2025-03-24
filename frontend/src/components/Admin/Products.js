@@ -37,7 +37,7 @@ const Products = () => {
           <div key={product.id} className='col-md-4 col-sm-6 mb-4'>
             <div className='card h-100 shadow-sm'>
               <div className='card-body'>
-                <img width={200} src={`http://localhost:8000/uploads/${product.productImage}`} alt="" />
+                <img width={200} src={`${product.productImage}`} alt="" />
                 <h5 className='card-title'>{product.productName}</h5>
                 <p className='card-text'>{product.productDesc}</p>
                 <p className='card-text'>Price: ${product.productPrice}</p>

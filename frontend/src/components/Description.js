@@ -37,7 +37,7 @@ const Description = () => {
                     {/* Product Image */}
                     <div className="col-lg-6 text-center">
                         <img
-                            src={`${IMAGE_URL}/${product.productImage}`}
+                            src={`${product.productImage}`}
                             className="img-fluid rounded shadow"
                             style={{ maxWidth: '100%', height: 'auto', maxHeight: '400px' }}
                             alt={product.productName}
