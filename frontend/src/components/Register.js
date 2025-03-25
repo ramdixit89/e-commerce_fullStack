@@ -20,7 +20,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${REACT_BASE_URL}/auth/register`.replace(/\/+/g, "/"), {
+            const response = await fetch(`${REACT_BASE_URL}//auth/register`.replace(/\/+/g, "/"), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
