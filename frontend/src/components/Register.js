@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
+// const REACT_BASE_URL =  process.env.REACT_APP_BASE_URL;
 const Register = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${REACT_BASE_URL}/auth/register`.replace(/\/+/g, "/"), {
+            const response = await fetch(`https://grand-bazar.onrender.com/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
