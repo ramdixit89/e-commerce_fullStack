@@ -13,6 +13,9 @@ const Sidebar = () => {
           <Link className='text-decoration-none' to='/admin_products'>Products</Link>
         </li>
         <li className='list-group-item'>
+          <Link className='text-decoration-none' to='/categories'>Categories</Link>
+        </li>
+        <li className='list-group-item'>
           <Link className='text-decoration-none' to='/allOrders'>Orders</Link>
         </li>
         <li className='list-group-item'>

@@ -8,6 +8,7 @@ const cors = require('cors');
 const path = require('path');
 const authrouter = require('./routes/authRoutes');
 const admin = require('./routes/adminRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -33,6 +34,7 @@ db();
 app.use('/api', router);
 app.use('/auth', authrouter);
 app.use('/admin', admin);
+app.use('/category', categoryRoutes);
 app.listen(PORT,() =>{
      console.log(`server is running on port ${PORT}`);
 });

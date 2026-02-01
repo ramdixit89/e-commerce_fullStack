@@ -6,10 +6,10 @@ import Sidebar from "./Sidebar";
 const AdminLayout = ({ children }) => {
   const navigate = useNavigate();
   useEffect(() => {
-    const adminEmail = localStorage.getItem("adminEmail");
+    const adminToken = localStorage.getItem("adminToken");
 
-    if (!adminEmail) {
-      navigate("/admin"); // Redirect to login if no email is found
+    if (!adminToken) {
+      navigate("/admin"); // Redirect to login if no token is found
     }
   }, [navigate]);
   return (

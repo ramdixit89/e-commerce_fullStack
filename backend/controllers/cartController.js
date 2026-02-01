@@ -3,25 +3,32 @@ const Product = require('../models/addProduct');
 const createCart = async (req, res) => {
     try {
         const { product_Id } = req.params;
-        const { user_Id } = req.body;
+        const { user_Id, variants } = req.body;
         const quantity = 1;
+
         if (!product_Id) {
-            return res.status(400).json({ message: "Product ID and quantity are required" });
+            return res.status(400).json({ message: "Product ID is required" });
         }
+
         const product = await Product.findById(product_Id);
         if (!product) {
             return res.status(404).json({ message: "Product not found" });
         }
-        const cartItem = await Cart.findOne({ user_Id });
+
+        // Search for existing item with same product AND same variants
+        const cartItem = await Cart.findOne({ user_Id, product_Id, variants });
+        
         if (cartItem) {
             cartItem.quantity += quantity;
             await cartItem.save();
             return res.status(200).json({ message: "Quantity updated successfully" });
         }
+
         const newCart = new Cart({
             user_Id,
             product_Id,
-            quantity
+            quantity,
+            variants
         });
         await newCart.save();
         res.status(201).json({ message: "Product added to cart successfully" });
@@ -30,21 +37,37 @@ const createCart = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 }
-//Decrease
+// Increment Quantity by Item ID (for Cart page)
+const incrementQuantity = async (req, res) => {
+    try {
+        const { cart_Id } = req.params;
+        const cartItem = await Cart.findById(cart_Id);
+        if (!cartItem) {
+            return res.status(404).json({ message: "Item not found in cart" });
+        }
+        cartItem.quantity += 1;
+        await cartItem.save();
+        res.status(200).json({ message: "Quantity increased successfully", cartItem });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+
+// Decrease Quantity by Item ID
 const decreaseQuantity = async (req, res) => {
     try {
-        const { product_Id } = req.params;
-        if (!product_Id) {
-            return res.status(400).json({ message: "Product ID is required" });
-        }
-        const cartItem = await Cart.findOne({ product_Id });
+        const { cart_Id } = req.params;
+        const cartItem = await Cart.findById(cart_Id);
         if (!cartItem) {
-            return res.status(404).json({ message: "Product not found in cart" });
+            return res.status(404).json({ message: "Item not found in cart" });
         }
         if (cartItem.quantity > 1) {
             cartItem.quantity -= 1;
             await cartItem.save();
             return res.status(200).json({ message: "Quantity decreased successfully", cartItem });
+        } else {
+            return res.status(400).json({ message: "Minimum quantity is 1" });
         }
     } catch (error) {
         console.error(error);
@@ -80,12 +103,12 @@ const getCartItem = async (req, res) => {
 //Remove cart
 const removecart = async (req, res) => {
     try {
-        const { product_Id } = req.params
-        await Cart.findByIdAndDelete(product_Id);
+        const { cart_Id } = req.params
+        await Cart.findByIdAndDelete(cart_Id);
         res.status(200).json({ message: "Product removed from cart successfully" });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Internal server error" });
     }
 }
-module.exports = { createCart, getCartItem, removecart, decreaseQuantity, getCartById };
+module.exports = { createCart, getCartItem, removecart, decreaseQuantity, incrementQuantity, getCartById };

@@ -42,9 +42,17 @@ const adminLogin = async (req, res) => {
             });
         }
         const admin = await Admin.findOne({ username });
+        if (!admin || admin.password !== password) {
+            return res.status(401).json({ status: 'failed', message: 'Invalid credentials' });
+        }
+        
+        const jwt = require('jsonwebtoken');
+        const token = jwt.sign({ userId: admin._id, role: 'admin' }, process.env.SECRET_KEY, { expiresIn: '24h' });
+
         res.status(200).json({
             status: 'success',
             message: 'Admin login successfully',
+            token
         });
     } catch (error) {
         console.log("Error", error);

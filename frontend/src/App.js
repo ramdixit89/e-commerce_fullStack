@@ -21,6 +21,7 @@ import Description from './components/Description';
 import OrderForm from './components/OrderForm';
 import AdminOrders from './components/Admin/AdminOrders';
 import MyOrder from './components/MyOrder';
+import Categories from './components/Admin/Categories';
 
 
 const App = () => {
@@ -55,6 +56,14 @@ const App = () => {
             element={
               <AdminLayout>
                 <AdminProducts />
+              </AdminLayout>
+            }
+          />
+          <Route
+            path='/categories'
+            element={
+              <AdminLayout>
+                <Categories />
               </AdminLayout>
             }
           />
@@ -138,6 +147,16 @@ const App = () => {
           />
             <Route
             path='/order/:id'
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <OrderForm />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+            <Route
+            path='/checkout/:id?'
             element={
               <ProtectedRoute>
                 <Layout>

@@ -15,6 +15,10 @@ const addToCartSchema = new Schema({
         type:Number,
         min:1,
         required:true
+    },
+    variants: {
+        type: Map,
+        of: String
     }
 });
 const addToCart = mongoose.model('cart',addToCartSchema);

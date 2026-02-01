@@ -56,7 +56,7 @@ const getAllOrders = async(req, res) =>{
     })
    } catch (error) {
     console.log(error);
-    res.status(400).json({ message : 'Error in server!' })
+    res.status(500).json({ message : 'Internal server error!' })
    }
 };
 //getOrder by userID
@@ -121,5 +121,26 @@ const updateOrderStatus = async (req, res) => {
     }
 };
 
-module.exports = { createOrder, getAllOrders, getAllOrders, getOrderById, updateOrderStatus };
+// Cancel Order
+const cancelOrder = async (req, res) => {
+    try {
+        const { orderId } = req.params;
+        const updatedOrder = await Order.findByIdAndUpdate(
+            orderId,
+            { status: "Canceled", "payment.status": "Refunded" },
+            { new: true }
+        );
+
+        if (!updatedOrder) {
+            return res.status(404).json({ message: "Order not found" });
+        }
+
+        res.status(200).json({ status: "Success", message: "Order canceled successfully", order: updatedOrder });
+    } catch (error) {
+        console.error("Error canceling order:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
+module.exports = { createOrder, getAllOrders, getOrderById, updateOrderStatus, cancelOrder };
 

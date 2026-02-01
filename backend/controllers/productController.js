@@ -37,9 +37,8 @@ const cloudinary = require('../config/cloudinaryConfig');
 const createProduct = async (req, res) => {
     try {
         console.log("Received files:", req.files); // Debugging log
-        const { productName, productDesc, productPrice } = req.body;
-        const image = req.files?.productImage; // Assuming you're using express-fileupload
-       
+        const { productName, productDesc, productPrice, category, variantGlobals, globalVariantInfo } = req.body;
+        const image = req.files?.productImage; 
 
         if (!productName || !productDesc || !productPrice) {
             return res.status(400).json({ message: "All fields are required" });
@@ -54,12 +53,20 @@ const createProduct = async (req, res) => {
         });
 
         // Save product with Cloudinary image URL
-        const product = await Product.create({
+        const productData = {
             productName,
             productDesc,
             productPrice,
-            productImage: uploadResult.secure_url // Cloudinary image URL
-        });
+            productImage: uploadResult.secure_url,
+            variantGlobals: variantGlobals ? JSON.parse(variantGlobals) : [],
+            globalVariantInfo: globalVariantInfo ? JSON.parse(globalVariantInfo) : []
+        };
+
+        if (category && category !== "") {
+            productData.category = category;
+        }
+
+        const product = await Product.create(productData);
 
         res.status(200).json({ status: "success", message: "Product created successfully", product });
     } catch (error) {
@@ -133,6 +140,13 @@ const updateProduct = async (req, res) => {
         product.productName = productName;
         product.productDesc = productDesc;
         product.productPrice = productPrice;
+
+        if (req.body.category && req.body.category !== "") {
+            product.category = req.body.category;
+        } else if (req.body.category === "") {
+            product.category = undefined; // Or null, depending on schema requirements
+        }
+
         await product.save();
 
         res.status(200).json({ message: "Product updated successfully", product });
@@ -144,7 +158,7 @@ const updateProduct = async (req, res) => {
 
 const getAllProduct = async (req, res) => {
     try {
-        const allProducts = await Product.find();
+        const allProducts = await Product.find().populate('category');
         res.status(200).json(allProducts);
     } catch (error) {
         console.log('Error', error);
@@ -154,7 +168,7 @@ const getAllProduct = async (req, res) => {
 const getProductById = async(req, res) =>{
    try {
     const { id } = req.params;
-    const product = await Product.findById(id);
+    const product = await Product.findById(id).populate('category');
     res.status(200).json({ status : 'success', product });
    } catch (error) {
     console.log('Error : ', error);

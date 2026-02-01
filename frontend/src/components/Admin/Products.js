@@ -19,7 +19,12 @@ const Products = () => {
   };
   const handleDelete = async (product_Id) => {
     try {
-      await fetch(`${REACT_BASE_URL}/api/delete/${product_Id}`, { method: 'DELETE' }); 
+      await fetch(`${REACT_BASE_URL}/api/delete/${product_Id}`, { 
+          method: 'DELETE',
+          headers: {
+              'Authorization': localStorage.getItem('adminToken')
+          }
+      }); 
       setProducts(products.filter(product => product.product_Id !== product_Id));
       fetchProducts();
     } catch (error) {

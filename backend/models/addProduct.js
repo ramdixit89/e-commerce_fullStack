@@ -17,7 +17,19 @@ const addProductSchema = new Schema({
     productImage: {
         type: String,
         required: true
-    }
+    },
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
+    },
+    variantGlobals: [{
+        name: String,
+        options: [String]
+    }],
+    globalVariantInfo: [{
+        key: String,
+        value: String
+    }]
 });
 addProductSchema.pre('findOneAndDelete', async function (next) {
     try {

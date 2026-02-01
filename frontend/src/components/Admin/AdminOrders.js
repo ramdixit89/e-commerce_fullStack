@@ -10,7 +10,11 @@ const AdminOrders = () => {
   }, []);
   const fetchOrders = async () => {
     try {
-      const response = await fetch(`${REACT_BASE_URL}/api/allOrders`);
+      const response = await fetch(`${REACT_BASE_URL}/api/allOrders`, {
+          headers: {
+              'Authorization': localStorage.getItem('adminToken')
+          }
+      });
       if (!response.ok) {
         throw new Error("Failed to fetch orders");
       }
@@ -44,6 +48,7 @@ const AdminOrders = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": localStorage.getItem("adminToken")
         },
         body: JSON.stringify({ status: newStatus }),
       });

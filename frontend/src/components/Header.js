@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { CartContext } from "../contextAPI/cartContext";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FiShoppingCart, FiShoppingBag, FiUser, FiLogOut } from "react-icons/fi";
 
 const Header = () => {
   const { cartQuantity, fetchCartItems } = useContext(CartContext);
@@ -17,16 +19,19 @@ const Header = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-white shadow-sm py-3">
+    <nav className="navbar navbar-expand-lg navbar-premium sticky-top">
       <div className="container">
         {/* Brand Logo */}
-        <Link className="navbar-brand fw-bold fs-4 text-primary" to="/products">
-        GrandBazaar
+        <Link className="navbar-brand d-flex align-items-center gap-2" to="/products">
+          <div className="bg-primary text-white p-2 rounded-3 d-flex align-items-center justify-content-center">
+             <FiShoppingBag size={24} />
+          </div>
+          <span className="fw-bold fs-4 gradient-text">GrandBazaar</span>
         </Link>
 
         {/* Toggle Button for Mobile */}
         <button
-          className="navbar-toggler"
+          className="navbar-toggler border-0 shadow-none"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -36,20 +41,21 @@ const Header = () => {
 
         {/* Navbar Links */}
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul className="navbar-nav align-items-center gap-3">
+          <ul className="navbar-nav align-items-center gap-2">
             <li className="nav-item">
-              <Link className="nav-link text-muted" to="/register">
+              <Link className="nav-link nav-link-premium" to="/register">
                 Register
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-muted" to="/">
+              <Link className="nav-link nav-link-premium" to="/">
                 Login
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/cart" className="btn btn-outline-primary position-relative">
-                Cart
+            <li className="nav-item ms-lg-2">
+              <Link to="/cart" className="nav-link nav-link-premium d-flex align-items-center gap-2 position-relative">
+                <FiShoppingCart size={20} />
+                <span>Cart</span>
                 {cartQuantity > 0 && (
                   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                     {cartQuantity}
@@ -58,13 +64,15 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/myorder" className="btn btn-outline-primary position-relative">
-                My order
+              <Link to="/myorder" className="nav-link nav-link-premium d-flex align-items-center gap-2">
+                <FiUser size={20} />
+                <span>My Orders</span>
               </Link>
             </li>
-            <li className="nav-item">
-              <button onClick={Logout} className="btn btn-danger">
-                Logout
+            <li className="nav-item ms-lg-3">
+              <button onClick={Logout} className="btn-premium btn-premium-primary py-2 px-4 d-flex align-items-center gap-2 shadow-sm">
+                <FiLogOut />
+                <span>Logout</span>
               </button>
             </li>
           </ul>

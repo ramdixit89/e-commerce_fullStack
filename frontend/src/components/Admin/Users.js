@@ -7,6 +7,9 @@ const Users = () => {
     try {
       const response = await fetch(`${REACT_BASE_URL}/admin/users`, {
         method: 'GET',
+        headers: {
+            'Authorization': localStorage.getItem('adminToken')
+        }
       });
       const data = await response.json();
       if (response.ok) {
